@@ -15,46 +15,25 @@ class ViewController: UIViewController, UgiInventoryDelegate {
     let db = SQLiteDB.sharedInstance
     var buttonIsPressed = false
     
+    // Update UI when a tag is found
     func inventoryTagFound(_ tag: UgiTag!,
                            withDetailedPerReadData detailedPerReadData: [UgiDetailedPerReadData]?) {
-        let inventory: UgiInventory? = Ugi.singleton().activeInventory
-        if (inventory != nil) {
-            let rfid = inventory!.tags.first!.epc.toString()
-            let data = db.query(sql: "SELECT description FROM tags WHERE rfid=?", parameters:[rfid])
+        //let inventory: UgiInventory? = Ugi.singleton().activeInventory
+        //let rfid = inventory!.tags.first!.epc.toString()
+        let rfid = tag.epc.toString()
+        let data = db.query(sql: "SELECT description FROM tags WHERE rfid=?", parameters:[rfid])
+        if (!data.isEmpty){
             let row = data[0]
             if let description = row["description"]{
                 displayTagLabel.text = description as? String
             }
-            //self.updateUI()
         }
-        else {
-            displayTagLabel.text = "No Tags Nearby"
-        }
-
     }
-    
-    //Update UI State
-    /*func updateUI(){
-        let inventory: UgiInventory? = Ugi.singleton().activeInventory
-        if (inventory != nil) {
-            let rfid = inventory!.tags.first!.epc.toString()
-            let data = db.query(sql: "SELECT description FROM tags WHERE rfid=?", parameters:[rfid])
-            let row = data[0]
-            if let description = row["description"]{
-                displayTagLabel.text = description as? String
-            }
-            //self.updateUI()
-        }
-        else {
-            displayTagLabel.text = "No Tags Nearby"
-        }
-    }*/
     
     //Control for Large Read Button
     @IBAction func readButton(_ sender: UIButton) {
         if buttonIsPressed {
             Ugi.singleton().activeInventory.stop {
-                //self.updateUI()
                 self.displayTagLabel.text = "STOP"
             }
             sender.setTitle("STOPPED", for: .normal)
@@ -64,7 +43,6 @@ class ViewController: UIViewController, UgiInventoryDelegate {
             Ugi.singleton().startInventory(
                 self,
                 with: UgiRfidConfiguration.config(withInventoryType: UgiInventoryTypes.UGI_INVENTORY_TYPE_LOCATE_DISTANCE))
-            //self.updateUI()
             sender.setTitle("SCANNING", for: .normal)
             buttonIsPressed = true
         }
@@ -78,7 +56,6 @@ class ViewController: UIViewController, UgiInventoryDelegate {
             with: UgiRfidConfiguration.config(withInventoryType: UgiInventoryTypes.UGI_INVENTORY_TYPE_LOCATE_DISTANCE))
         let inventory: UgiInventory? = Ugi.singleton().activeInventory
         if (inventory?.tags.count != 0){
-            //self.updateUI()
         }
     }
     

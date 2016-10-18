@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F0DA4701DB5B0A5003CCE56 /* data.db in Resources */ = {isa = PBXBuildFile; fileRef = 9F0DA46F1DB5B0A0003CCE56 /* data.db */; };
 		9F1191811DAC92D200410CFC /* UGrokItApiResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9F1191801DAC92D200410CFC /* UGrokItApiResources.bundle */; };
 		9F1191821DAC92D200410CFC /* UGrokItApiResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9F1191801DAC92D200410CFC /* UGrokItApiResources.bundle */; };
 		9F1191831DAC92D200410CFC /* UGrokItApiResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9F1191801DAC92D200410CFC /* UGrokItApiResources.bundle */; };
@@ -25,7 +26,6 @@
 		9FEB70281DB3EE2200B714BB /* SQLTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEB70241DB3EE2200B714BB /* SQLTable.swift */; };
 		9FEB70291DB3EE2200B714BB /* String-Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEB70251DB3EE2200B714BB /* String-Extras.swift */; };
 		9FEB702B1DB3EE8400B714BB /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FEB702A1DB3EE8400B714BB /* libsqlite3.tbd */; };
-		9FEB70341DB464D100B714BB /* data.db in Resources */ = {isa = PBXBuildFile; fileRef = 9FEB70331DB464B000B714BB /* data.db */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9F0DA46F1DB5B0A0003CCE56 /* data.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = data.db; path = ../data.db; sourceTree = "<group>"; };
 		9F11917E1DAC8F1200410CFC /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		9F1191801DAC92D200410CFC /* UGrokItApiResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = UGrokItApiResources.bundle; path = ../UGrokItApiResources.bundle; sourceTree = "<group>"; };
 		9F1191841DAC92E900410CFC /* libUGrokItApi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUGrokItApi.a; path = ../libUGrokItApi.a; sourceTree = "<group>"; };
@@ -66,7 +67,6 @@
 		9FEB70241DB3EE2200B714BB /* SQLTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLTable.swift; sourceTree = "<group>"; };
 		9FEB70251DB3EE2200B714BB /* String-Extras.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String-Extras.swift"; sourceTree = "<group>"; };
 		9FEB702A1DB3EE8400B714BB /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		9FEB70331DB464B000B714BB /* data.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = data.db; path = ../data.db; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +111,7 @@
 		9FB8C82A1DAA912C00AC6A57 = {
 			isa = PBXGroup;
 			children = (
-				9FEB70331DB464B000B714BB /* data.db */,
+				9F0DA46F1DB5B0A0003CCE56 /* data.db */,
 				9F1191841DAC92E900410CFC /* libUGrokItApi.a */,
 				9F1191801DAC92D200410CFC /* UGrokItApiResources.bundle */,
 				9FB8C8351DAA912C00AC6A57 /* ssa */,
@@ -274,11 +274,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9FEB70341DB464D100B714BB /* data.db in Resources */,
 				9F1191811DAC92D200410CFC /* UGrokItApiResources.bundle in Resources */,
 				9FB8C8411DAA912C00AC6A57 /* LaunchScreen.storyboard in Resources */,
 				9FB8C83E1DAA912C00AC6A57 /* Assets.xcassets in Resources */,
 				9FB8C83C1DAA912C00AC6A57 /* Main.storyboard in Resources */,
+				9F0DA4701DB5B0A5003CCE56 /* data.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
