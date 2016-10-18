@@ -13,7 +13,8 @@ class ViewController: UIViewController, UgiInventoryDelegate {
     //Variables
     @IBOutlet weak var displayTagLabel: UILabel!
     let db = SQLiteDB.sharedInstance
-    var buttonIsPressed = false
+    var scanPaused = false
+    var scanStopped = true
     
     // Update UI when a tag is found
     func inventoryTagFound(_ tag: UgiTag!,
@@ -30,49 +31,45 @@ class ViewController: UIViewController, UgiInventoryDelegate {
         }
     }
     
-    //Control for Large Read Button
-    @IBAction func readButton(_ sender: UIButton) {
-        if buttonIsPressed {
-            Ugi.singleton().activeInventory.stop {
-                self.displayTagLabel.text = "STOP"
+    // Control for Stop Button
+    @IBAction func STOP(_ sender: UIButton) {
+        let inventory: UgiInventory? = Ugi.singleton().activeInventory
+        if (inventory != nil){
+            inventory!.stop {
+                self.displayTagLabel.text = "Stopped"
+                self.scanStopped = true
+                self.scanPaused = false
+                let scanButton = self.view.viewWithTag(1) as! UIButton
+                scanButton.setTitle("SCAN", for: .normal)
             }
-            sender.setTitle("STOPPED", for: .normal)
-            buttonIsPressed = false
-            
-        } else{
+        }
+    }
+
+    // Control for Read Button
+    @IBAction func readButton(_ sender: UIButton) {
+        let inventory: UgiInventory? = Ugi.singleton().activeInventory
+        if scanStopped {
             Ugi.singleton().startInventory(
                 self,
                 with: UgiRfidConfiguration.config(withInventoryType: UgiInventoryTypes.UGI_INVENTORY_TYPE_LOCATE_DISTANCE))
             sender.setTitle("SCANNING", for: .normal)
-            buttonIsPressed = true
+            self.scanStopped = false
+        }
+        else if scanPaused {
+            inventory!.resumeInventory()
+            sender.setTitle("SCANNING", for: .normal)
+            self.scanPaused = false
+        }
+        else {
+            inventory!.pause()
+            sender.setTitle("PAUSED", for: .normal)
+            self.scanPaused = true
         }
     }
-    
-    
-    // Control for Start Button
-    @IBAction func readStartButton(_ sender: UIButton) {
-        Ugi.singleton().startInventory(
-            self,
-            with: UgiRfidConfiguration.config(withInventoryType: UgiInventoryTypes.UGI_INVENTORY_TYPE_LOCATE_DISTANCE))
-        let inventory: UgiInventory? = Ugi.singleton().activeInventory
-        if (inventory?.tags.count != 0){
-        }
-    }
-    
-    // Control for Stop Button
-    @IBAction func readStopButton(_ sender: UIButton) {
-        if (Ugi.singleton().activeInventory != nil && Ugi.singleton().activeInventory.isScanning){
-            Ugi.singleton().activeInventory.stop {
-                self.displayTagLabel.text = "Stopped"
-            }
-        }
-    }
-    
     
     /**/
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
