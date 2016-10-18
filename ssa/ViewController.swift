@@ -31,6 +31,11 @@ class ViewController: UIViewController, UgiInventoryDelegate {
         }
     }
     
+    // Take special actions on subsequent find
+    func inventoryTagSubsequentFinds(_ tag: UgiTag!, numFinds num: Int32, withDetailedPerReadData detailedPerReadData: [UgiDetailedPerReadData]!) {
+        
+    }
+    
     // Control for Stop Button
     @IBAction func STOP(_ sender: UIButton) {
         let inventory: UgiInventory? = Ugi.singleton().activeInventory
