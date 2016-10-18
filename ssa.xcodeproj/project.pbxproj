@@ -26,6 +26,7 @@
 		9FEB70291DB3EE2200B714BB /* String-Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEB70251DB3EE2200B714BB /* String-Extras.swift */; };
 		9FEB702B1DB3EE8400B714BB /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FEB702A1DB3EE8400B714BB /* libsqlite3.tbd */; };
 		FB19D9A21DB69A6F00056295 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB19D9A11DB69A6F00056295 /* Queue.swift */; };
+		FB19D9A41DB6A22400056295 /* data.db in Resources */ = {isa = PBXBuildFile; fileRef = FB19D9A31DB69B5500056295 /* data.db */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -276,6 +277,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB19D9A41DB6A22400056295 /* data.db in Resources */,
 				9F1191811DAC92D200410CFC /* UGrokItApiResources.bundle in Resources */,
 				9FB8C8411DAA912C00AC6A57 /* LaunchScreen.storyboard in Resources */,
 				9FB8C83E1DAA912C00AC6A57 /* Assets.xcassets in Resources */,
