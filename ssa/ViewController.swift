@@ -15,6 +15,8 @@ class ViewController: UIViewController, UgiInventoryDelegate {
     let db = SQLiteDB.sharedInstance
     var scanPaused = false
     var scanStopped = true
+    // Queue of descriptions to be read aloud
+    let descriptionQueue = Queue<String>();
     
     // Update UI when a tag is found
     func inventoryTagFound(_ tag: UgiTag!,
@@ -23,10 +25,15 @@ class ViewController: UIViewController, UgiInventoryDelegate {
         //let rfid = inventory!.tags.first!.epc.toString()
         let rfid = tag.epc.toString()
         let data = db.query(sql: "SELECT description FROM tags WHERE rfid=?", parameters:[rfid])
+        
+        // RFID Tag found in DB.
         if (!data.isEmpty){
+            // Since we queried one tag at a time, the returned dictionary only has one entry.
             let row = data[0]
             if let description = row["description"]{
+                // Change the label, and push it onto queue of descriptions.
                 displayTagLabel.text = description as? String
+                descriptionQueue.enqueue(value: description as! String);
             }
         }
     }
