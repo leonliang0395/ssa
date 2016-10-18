@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9F0DA4701DB5B0A5003CCE56 /* data.db in Resources */ = {isa = PBXBuildFile; fileRef = 9F0DA46F1DB5B0A0003CCE56 /* data.db */; };
+		9F0DA4721DB6900F003CCE56 /* data.db in Resources */ = {isa = PBXBuildFile; fileRef = 9F0DA4711DB69001003CCE56 /* data.db */; };
 		9F1191811DAC92D200410CFC /* UGrokItApiResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9F1191801DAC92D200410CFC /* UGrokItApiResources.bundle */; };
 		9F1191821DAC92D200410CFC /* UGrokItApiResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9F1191801DAC92D200410CFC /* UGrokItApiResources.bundle */; };
 		9F1191831DAC92D200410CFC /* UGrokItApiResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9F1191801DAC92D200410CFC /* UGrokItApiResources.bundle */; };
@@ -46,7 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9F0DA46F1DB5B0A0003CCE56 /* data.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = data.db; path = ../data.db; sourceTree = "<group>"; };
+		9F0DA4711DB69001003CCE56 /* data.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = data.db; sourceTree = "<group>"; };
 		9F11917E1DAC8F1200410CFC /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		9F1191801DAC92D200410CFC /* UGrokItApiResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = UGrokItApiResources.bundle; path = ../UGrokItApiResources.bundle; sourceTree = "<group>"; };
 		9F1191841DAC92E900410CFC /* libUGrokItApi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUGrokItApi.a; path = ../libUGrokItApi.a; sourceTree = "<group>"; };
@@ -111,7 +111,7 @@
 		9FB8C82A1DAA912C00AC6A57 = {
 			isa = PBXGroup;
 			children = (
-				9F0DA46F1DB5B0A0003CCE56 /* data.db */,
+				9F0DA4711DB69001003CCE56 /* data.db */,
 				9F1191841DAC92E900410CFC /* libUGrokItApi.a */,
 				9F1191801DAC92D200410CFC /* UGrokItApiResources.bundle */,
 				9FB8C8351DAA912C00AC6A57 /* ssa */,
@@ -274,11 +274,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F0DA4721DB6900F003CCE56 /* data.db in Resources */,
 				9F1191811DAC92D200410CFC /* UGrokItApiResources.bundle in Resources */,
 				9FB8C8411DAA912C00AC6A57 /* LaunchScreen.storyboard in Resources */,
 				9FB8C83E1DAA912C00AC6A57 /* Assets.xcassets in Resources */,
 				9FB8C83C1DAA912C00AC6A57 /* Main.storyboard in Resources */,
-				9F0DA4701DB5B0A5003CCE56 /* data.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
