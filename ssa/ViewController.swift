@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController, UgiInventoryDelegate {
 
@@ -18,6 +19,10 @@ class ViewController: UIViewController, UgiInventoryDelegate {
     
     // Queue of descriptions to be read aloud
     let descriptionQueue = Queue<String>();
+    // Dictionary of RFID tags to the time it was read aloud.
+    var finishedDescriptions: [String:NSDate] = [:];
+    // Text to speech reader
+    let speechSynthesizer = AVSpeechSynthesizer()
     
     // Update UI when a tag is found
     func inventoryTagFound(_ tag: UgiTag!,
@@ -68,6 +73,15 @@ class ViewController: UIViewController, UgiInventoryDelegate {
                 scanButton.setTitle("SCAN", for: .normal)
             }
         }
+        // TODO: Just testing out speech to text in the stop button for now.
+        // Text to Speech works fine (after testing it with a hard coded string)
+        // but it does not play with the RFID reader plugged in.
+        //
+        // This block of text is basically the functionality of dequeueing
+        // from the description queue and reading it outloud.
+        let nextDescription = descriptionQueue.dequeue()
+        let descriptionUtter = AVSpeechUtterance(string: nextDescription!)
+        speechSynthesizer.speak(descriptionUtter)
     }
 
     // Control for Read Button
