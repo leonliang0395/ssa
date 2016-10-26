@@ -11,8 +11,7 @@ insert into descriptions
 values(cast(1 as binary(36)), cast(3 as binary(30)), 'living room', null);
 
 --start
-insert into tags
-values(cast(0 as binary(10)), cast(1 as binary(36)), cast(2 as binary(30)), cast(10 as binary(20)));
+insert into tags values(cast(0 as binary(10)), cast(1 as binary(36)), cast(2 as binary(30)), cast(10 as binary(20)));
 insert into tags
 values(cast(1 as binary(10)), cast(100 as binary(36)), cast(2 as binary(30)), cast(10 as binary(20)));
 --end

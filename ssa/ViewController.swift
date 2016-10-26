@@ -10,21 +10,34 @@ import UIKit
 
 class ViewController: UIViewController, UgiInventoryDelegate {
 
-    //Variables
+    // Variables
     @IBOutlet weak var displayTagLabel: UILabel!
     let db = SQLiteDB.sharedInstance
     var scanPaused = false
     var scanStopped = true
+    
     // Queue of descriptions to be read aloud
     let descriptionQueue = Queue<String>();
     
     // Update UI when a tag is found
     func inventoryTagFound(_ tag: UgiTag!,
                            withDetailedPerReadData detailedPerReadData: [UgiDetailedPerReadData]?) {
-        //let inventory: UgiInventory? = Ugi.singleton().activeInventory
         //let rfid = inventory!.tags.first!.epc.toString()
         let rfid = tag.epc.toString()
-        let data = db.query(sql: "SELECT description FROM tags WHERE rfid=?", parameters:[rfid])
+        
+        // declare index ranges for hex RFID string
+        let endTypeRange = rfid!.index(rfid!.startIndex, offsetBy: 2)
+        let endLocRange = rfid!.index(rfid!.startIndex, offsetBy: 11)
+        let endDescRange = rfid!.index(rfid!.startIndex, offsetBy: 19)
+        let locRange = endTypeRange..<endLocRange
+        let descRange = endLocRange..<endDescRange
+        
+        // get necessary rfid subcomponents
+        let lid = rfid!.substring(with: locRange)
+        let did = rfid!.substring(with: descRange)
+        
+        // query database for description
+        let data = db.query(sql: "SELECT description FROM descriptions WHERE lid=? AND did=?", parameters:[lid, did])
         
         // RFID Tag found in DB.
         if (!data.isEmpty){
